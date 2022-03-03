@@ -26,7 +26,7 @@ public class ReajusteServiceTest {
 
     @Test
     @DisplayName("Deve ser dado um reajuste salarial de 15 por cento para desempenho Bom")
-    public void reajusteDeQuinzePorCentoParaDessempenhoBom(){
+    public void reajusteDeQuinzePorCentoParaDesempenhoBom(){
         Funcionario funcionario = new Funcionario("Thiago", LocalDate.now(), new BigDecimal("1000"));
 
         reajusteService.concedeReajuste(funcionario, Desempenho.BOM);
@@ -36,11 +36,11 @@ public class ReajusteServiceTest {
 
     @Test
     @DisplayName("Deve ser dado um reajuste salarial de 20 por cento para desempenho Ótimo")
-    public void reajusteDeVintePorCentoParaDessempenhoBom(){
+    public void reajusteDeVintePorCentoParaDesempenhoBom(){
         Funcionario funcionario = new Funcionario("Thiago", LocalDate.now(), new BigDecimal("1000"));
 
         reajusteService.concedeReajuste(funcionario, Desempenho.OTIMO);
 
-        assertEquals(new BigDecimal("1200.00"),funcionario.getSalario());
+        assertEquals(new BigDecimal("1200.0"),funcionario.getSalario());
     }
 }
