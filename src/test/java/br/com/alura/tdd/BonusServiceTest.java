@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BonusServiceTest {
 
@@ -17,10 +17,18 @@ public class BonusServiceTest {
     @Test
     @DisplayName("Caso o cálculo de bônus com base no salário for maior que mil, funcionário não receberá nada")
     public void bonusZeroParaSalariosAltos(){
-        BigDecimal bonus = bonusService.calcularBonus(new Funcionario("Thiago", LocalDate.now(), new BigDecimal("25000")));
+        assertThrows(IllegalArgumentException.class,
+                () -> bonusService.calcularBonus(new Funcionario("Thiago", LocalDate.now(), new BigDecimal("25000"))));
 
-        assertEquals(BigDecimal.ZERO, bonus);
-
+        //Para capturar mensagem correta
+        /*
+        try {
+            bonusService.calcularBonus(new Funcionario("Thiago", LocalDate.now(), new BigDecimal("25000")));
+            fail("Não deu a exception.");
+        } catch (Exception e) {
+            assertEquals("Funcionário com salário maior que R$ 10.000,00 não pode receber bônus.", e.getMessage());
+        }
+        */
     }
 
     @Test
